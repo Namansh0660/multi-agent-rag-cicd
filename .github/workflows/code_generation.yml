@@ -1,0 +1,27 @@
+name: Code Generation Agent
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+jobs:
+  code_gen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Code Generation Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python agents/code_generation_agent.py

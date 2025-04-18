@@ -2,7 +2,7 @@ import os
 import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("models/gemini-pro")
+model = genai.GenerativeModel("models/gemini-2.0-flash")
 
 # Simulate reading issue or PR title from GitHub (for demo)
 prompt = "Generate a Python function that reverses a string and checks if it's a palindrome."

@@ -25,3 +25,9 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python agents/code_generation_agent.py
+
+      - name: Upload Generated Code
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-code
+          path: outputs/generated_code.py

@@ -2,7 +2,7 @@ import os
 import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel("models/gemini-2.0-flash")
 
 code_files = [f for f in os.listdir() if f.endswith(".py") and "agent" not in f]
 

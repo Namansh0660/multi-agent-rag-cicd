@@ -2,14 +2,15 @@ import os
 import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("models/gemini-2.0-flash")
 
-# Simulate reading issue or PR title from GitHub (for demo)
+model = genai.GenerativeModel("models/gemini-2.0-flash")
 prompt = "Generate a Python function that reverses a string and checks if it's a palindrome."
 
 response = model.generate_content(prompt)
 
-with open("generated_code.py", "w") as f:
+# 🔥 Save the output in outputs folder
+os.makedirs("outputs", exist_ok=True)
+with open("outputs/generated_code.py", "w") as f:
     f.write(response.text)
 
-print("[Agent] Generated code saved to 'generated_code.py'")
+print("[Agent] Generated code saved to 'outputs/generated_code.py'")
